@@ -9,14 +9,13 @@
 <script>
     // Забираем параметры из URL
     const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');       // код комнаты
-    const mode = params.get('mode');       // режим игры
+    const word = params.get('word');       // код комнаты
+ 
     
     const packageName = 'com.sinya.projects.wordle';
-    const playStoreUrl = `https://play.google.com/store/apps/details?id=${packageName}`;
+   const playStoreUrl = `https://www.rustore.ru/catalog/app/${packageName}`;
     
-    // Deep link с передачей параметров
-    const deepLink = `wordy://invite?code=${code}&mode=${mode}`;
+    const deepLink = `wordy-fresh://invite?word=${word}`;
     
     // Пытаемся открыть приложение
     const startTime = Date.now();
@@ -33,7 +32,7 @@
 
 <p>Открываем игру...</p>
 <p>Если ничего не происходит, 
-   <a href="https://play.google.com/store/apps/details?id=com.sinya.projects.wordle">
+   <a href="https://www.rustore.ru/catalog/app/com.sinya.projects.wordle">
        скачай приложение
    </a>
 </p>
