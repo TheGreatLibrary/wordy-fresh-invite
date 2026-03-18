@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Wordy — присоединиться к игре</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<script>
+    // Забираем параметры из URL
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');       // код комнаты
+    const mode = params.get('mode');       // режим игры
+    
+    const packageName = 'com.sinya.projects.wordle';
+    const playStoreUrl = `https://play.google.com/store/apps/details?id=${packageName}`;
+    
+    // Deep link с передачей параметров
+    const deepLink = `wordy://invite?code=${code}&mode=${mode}`;
+    
+    // Пытаемся открыть приложение
+    const startTime = Date.now();
+    
+    window.location.href = deepLink;
+    
+    // Если через 1.5 сек приложение не открылось — редирект в Play Store
+    setTimeout(() => {
+        if (Date.now() - startTime < 2000) {
+            window.location.href = playStoreUrl;
+        }
+    }, 1500);
+</script>
+
+<p>Открываем игру...</p>
+<p>Если ничего не происходит, 
+   <a href="https://play.google.com/store/apps/details?id=com.sinya.projects.wordle">
+       скачай приложение
+   </a>
+</p>
+</body>
+</html>
