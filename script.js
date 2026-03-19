@@ -12,7 +12,7 @@ function tryOpen() {
     setTimeout(() => {
         const elapsed = Date.now() - startTime;
         // Если фокус остался (приложение не открылось)
-        document.getElementById('status').textContent = 'Приложение не найдено. Скачай Wordy в RuStore 👇';
+        document.getElementById('status').textContent = 'Приложение не найдено. Скачай Wordy в RuStore 👆';
         document.getElementById('storeBtn').style.display = 'flex';
         document.getElementById('openBtn').textContent = 'Попробовать снова';
     }, 1600);
