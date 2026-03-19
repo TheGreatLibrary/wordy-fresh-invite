@@ -51,7 +51,8 @@ body::before {
 .logo {
     font-family: 'Unbounded', sans-serif;
     font-weight: 900;
-    font-size: 30px;
+    font-size: 28px;
+    text-align: center;
     letter-spacing: -1px;
     color: var(--text);
 }
