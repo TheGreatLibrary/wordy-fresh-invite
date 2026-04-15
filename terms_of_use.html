@@ -2,46 +2,314 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Условия использования</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wordy Fresh — Terms of Use</title>
   <link rel="icon" type="image/png" href="img/ic_app.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-    h1 { color: #333; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #181b24;
+      --border: #2a2e3a;
+      --text: #e2e4e9;
+      --text-muted: #8b8f9e;
+      --accent: #6ee05a;
+      --accent-dim: rgba(110, 224, 90, 0.08);
+      --radius: 14px;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      min-height: 100vh;
+    }
+
+    /* ── header bar ── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: rgba(15, 17, 23, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--text-muted); font-weight: 400; }
+
+    /* ── language switcher ── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* ── content ── */
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .page-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 8px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      padding-left: 38px;
+    }
+
+    /* ── lang visibility ── */
+    .lang-content { display: none; }
+    .lang-content.visible { display: block; }
+
+    /* ── footer ── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    /* ── animations ── */
+    .lang-content.visible .section {
+      animation: slideUp 0.3s ease both;
+    }
+    .lang-content.visible .section:nth-child(2) { animation-delay: 0.03s; }
+    .lang-content.visible .section:nth-child(3) { animation-delay: 0.06s; }
+    .lang-content.visible .section:nth-child(4) { animation-delay: 0.09s; }
+    .lang-content.visible .section:nth-child(5) { animation-delay: 0.12s; }
+    .lang-content.visible .section:nth-child(6) { animation-delay: 0.15s; }
+    .lang-content.visible .section:nth-child(7) { animation-delay: 0.18s; }
+    .lang-content.visible .section:nth-child(8) { animation-delay: 0.21s; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .top-bar { padding: 12px 16px; }
+      .wrapper { padding: 32px 18px 60px; }
+      .lang-btn { padding: 5px 10px; font-size: 0.78rem; }
+      .section p { padding-left: 0; margin-top: 4px; }
+    }
   </style>
 </head>
 <body>
-  <h1>Условия использования</h1>
-  <p>Настоящие условия регулируют использование мобильного приложения Wordy. Устанавливая приложение и создавая аккаунт, вы соглашаетесь с изложенными ниже положениями.</p>
 
-  <h2>1. Назначение</h2>
-  <p>Wordy — это некоммерческое учебное приложение, предназначенное для тренировки памяти, расширения словарного запаса и прохождения геймифицированных заданий. Все внутриигровые элементы (баллы, достижения, уровни, валюты) являются виртуальными и не имеют реальной стоимости.</p>
+  <header class="top-bar">
+    <div class="logo">Wordy<span>Fresh</span></div>
+    <nav class="lang-switch">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="cs">CZ</button>
+    </nav>
+  </header>
 
-  <h2>2. Регистрация и аккаунт</h2>
-  <p>Для доступа к функциональности приложения пользователь может зарегистрировать аккаунт, указав адрес электронной почты, пароль и никнейм. Фото профиля загружается по желанию. Пользователь несёт ответственность за безопасность своих данных для входа.</p>
+  <main class="wrapper">
 
-  <h2>3. Хранение данных</h2>
-  <p>Все пользовательские данные, включая прогресс, достижения и статистику, сохраняются на сервере для синхронизации между устройствами. Эти данные не передаются третьим лицам и используются исключительно в рамках работы приложения.</p>
+    <!-- ════════ RUSSIAN ════════ -->
+    <div class="lang-content visible" id="lang-ru">
+      <h1 class="page-title">Условия использования</h1>
+      <p class="updated">Последнее обновление: июль 2025</p>
+      <p class="intro">Настоящие условия регулируют использование мобильного приложения Wordy Fresh. Устанавливая приложение и создавая аккаунт, вы соглашаетесь с изложенными ниже положениями.</p>
 
-  <h2>4. Ограничение ответственности</h2>
-  <p>Разработчик не гарантирует бесперебойную или безошибочную работу приложения и не несёт ответственности за временные сбои, потерю данных или искажения, возникшие в результате технических ошибок. Использование приложения осуществляется "как есть".</p>
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Назначение</h2></div>
+        <p>Wordy Fresh — некоммерческое учебное приложение для тренировки памяти, расширения словарного запаса и прохождения геймифицированных заданий. Все внутриигровые элементы (баллы, достижения, уровни) являются виртуальными и не имеют реальной стоимости.</p></div>
 
-  <h2>5. Права пользователя</h2>
-  <p>Вы имеете право прекратить использование приложения в любой момент. Для удаления аккаунта и связанных данных вы можете отправить запрос через форму обратной связи.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Регистрация и аккаунт</h2></div>
+        <p>Для доступа к функциям приложения пользователь может зарегистрировать аккаунт, указав адрес электронной почты, пароль и никнейм. Фото профиля загружается по желанию. Пользователь несёт ответственность за сохранность своих данных для входа.</p></div>
 
-  <h2>6. Обратная связь</h2>
-  <p>Все пожелания и вопросы можно направлять через форму обратной связи в приложении. Ответы предоставляются вручную, по мере возможности.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Хранение данных</h2></div>
+        <p>Пользовательские данные — прогресс, достижения и статистика — сохраняются на сервере для синхронизации между устройствами. Эти данные не передаются третьим лицам и используются исключительно для работы приложения.</p></div>
 
-  <h2>7. Изменения условий</h2>
-  <p>Настоящие условия могут быть обновлены в любое время без предварительного уведомления. Действующая версия всегда доступна в приложении и на сайте.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Реклама</h2></div>
+        <p>Приложение содержит рекламные материалы, предоставляемые сторонними рекламными сетями. Реклама может быть персонализированной на основе обезличенных данных в соответствии с политиками рекламных партнёров. Доход от рекламы используется для поддержки и развития приложения.</p></div>
 
-  <p>Дата последнего обновления: июль 2025 года</p>
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Ограничение ответственности</h2></div>
+        <p>Разработчик не гарантирует бесперебойную или безошибочную работу приложения и не несёт ответственности за временные сбои, потерю или искажение данных. Приложение предоставляется «как есть».</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>Права пользователя</h2></div>
+        <p>Вы можете прекратить использование приложения в любой момент. Для удаления аккаунта и связанных данных отправьте запрос через форму обратной связи в приложении.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Обратная связь</h2></div>
+        <p>Вопросы и пожелания можно направлять через форму обратной связи в приложении. Ответы предоставляются по мере возможности.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Изменение условий</h2></div>
+        <p>Настоящие условия могут быть обновлены без предварительного уведомления. Актуальная версия всегда доступна в приложении и на сайте.</p></div>
+    </div>
+
+    <!-- ════════ ENGLISH ════════ -->
+    <div class="lang-content" id="lang-en">
+      <h1 class="page-title">Terms of Use</h1>
+      <p class="updated">Last updated: July 2025</p>
+      <p class="intro">These terms govern the use of the Wordy Fresh mobile application. By installing the app and creating an account, you agree to the following provisions.</p>
+
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Purpose</h2></div>
+        <p>Wordy Fresh is a non-commercial educational app designed for memory training, vocabulary building, and gamified challenges. All in-game elements (points, achievements, levels) are virtual and hold no real-world monetary value.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Registration &amp; Account</h2></div>
+        <p>To access the app's features, you may create an account by providing an email address, password, and nickname. A profile photo is optional. You are responsible for keeping your login credentials secure.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Data Storage</h2></div>
+        <p>User data — including progress, achievements, and statistics — is stored on our server for cross-device synchronization. This data is not shared with third parties and is used solely for the app's operation.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Advertising</h2></div>
+        <p>The app displays advertisements provided by third-party ad networks. Ads may be personalized based on anonymized data in accordance with the advertising partners' policies. Ad revenue is used to support and improve the app.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Limitation of Liability</h2></div>
+        <p>The developer does not guarantee uninterrupted or error-free operation and is not liable for temporary outages, data loss, or corruption. The app is provided "as is."</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>User Rights</h2></div>
+        <p>You may stop using the app at any time. To delete your account and associated data, submit a request through the in-app feedback form.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Feedback</h2></div>
+        <p>Questions and suggestions can be sent via the in-app feedback form. Responses are provided on a best-effort basis.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Changes to Terms</h2></div>
+        <p>These terms may be updated at any time without prior notice. The current version is always available within the app and on the website.</p></div>
+    </div>
+
+    <!-- ════════ CZECH ════════ -->
+    <div class="lang-content" id="lang-cs">
+      <h1 class="page-title">Podmínky používání</h1>
+      <p class="updated">Poslední aktualizace: červenec 2025</p>
+      <p class="intro">Tyto podmínky upravují používání mobilní aplikace Wordy Fresh. Instalací aplikace a vytvořením účtu souhlasíte s níže uvedenými ustanoveními.</p>
+
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Účel</h2></div>
+        <p>Wordy Fresh je nekomerční vzdělávací aplikace určená k tréninku paměti, rozšiřování slovní zásoby a plnění herních úkolů. Všechny herní prvky (body, úspěchy, úrovně) jsou virtuální a nemají žádnou reálnou hodnotu.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Registrace a účet</h2></div>
+        <p>Pro přístup k funkcím aplikace si můžete vytvořit účet zadáním e-mailové adresy, hesla a přezdívky. Profilová fotografie je volitelná. Za bezpečnost přihlašovacích údajů odpovídáte vy.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Ukládání dat</h2></div>
+        <p>Uživatelská data — postup, úspěchy a statistiky — jsou uložena na serveru za účelem synchronizace mezi zařízeními. Tato data nejsou sdílena s třetími stranami a slouží výhradně pro provoz aplikace.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Reklama</h2></div>
+        <p>Aplikace zobrazuje reklamy poskytované reklamními sítěmi třetích stran. Reklamy mohou být personalizované na základě anonymizovaných dat v souladu s podmínkami reklamních partnerů. Příjmy z reklamy slouží k podpoře a rozvoji aplikace.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Omezení odpovědnosti</h2></div>
+        <p>Vývojář nezaručuje nepřetržitý ani bezchybný provoz a neodpovídá za dočasné výpadky, ztrátu nebo poškození dat. Aplikace je poskytována „tak, jak je".</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>Práva uživatele</h2></div>
+        <p>Používání aplikace můžete kdykoli ukončit. Pro smazání účtu a souvisejících dat odešlete žádost prostřednictvím formuláře zpětné vazby v aplikaci.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Zpětná vazba</h2></div>
+        <p>Dotazy a návrhy lze zasílat prostřednictvím formuláře zpětné vazby v aplikaci. Odpovědi jsou poskytovány dle možností.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Změny podmínek</h2></div>
+        <p>Tyto podmínky mohou být kdykoli aktualizovány bez předchozího upozornění. Aktuální verze je vždy dostupná v aplikaci a na webových stránkách.</p></div>
+    </div>
+
+  </main>
+
+  <footer class="footer">© 2025 Wordy Fresh</footer>
+
+  <script>
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const lang = btn.dataset.lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('visible'));
+        document.getElementById('lang-' + lang).classList.add('visible');
+      });
+    });
+  </script>
 </body>
 </html>
-
-java -jar C:\Users\sz240\pepk.jar --keystore C:\KeyStores\SaleRecord.jks --alias upload --output C:\KeyStores\new/pepk_out.zip --encryptionkey=00005cd7ce5ece9e06ef8514bd9f349ac7d7e7cc506760804dd95fe2f5ba274d65319e46fe3b6eaa3bd62e8564bf7f782cbf1bf69c9714454973adbffe565d8ef6bbd54f --include-cert
-
-keytool -importkeystore -srckeystore C:\KeyStores\SaleRecord.jks -destkeystore C:\KeyStores\new\keystore.keystore -srcstorepass 148796556 -deststorepass 148796556
-
-keytool -exportcert -alias upload -keystore C:\KeyStores\SaleRecord.jks -rfc -file C:\KeyStores\new\upload_certificate.pem
-
-java -jar C:\Users\sz240\pepk.jar --keystore C:\KeyStores\SaleRecord.jks --alias upload --output C:\KeyStores\new/pepk_out.zip --encryptionkey=00005d34fd0f2792e3ada2d296f2a051220de4223902c756a917c38361eca46a5bafae8350e886d3dbacd69223a1da0de688066c3e6b97952ee77015d9e64fe5c15d85ef --include-cert
