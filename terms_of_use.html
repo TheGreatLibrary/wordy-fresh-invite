@@ -4,31 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wordy Fresh — Terms of Use</title>
-  <link rel="icon" type="image/png" href="img/ic_app.png">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/icon_app_without_bg.png">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Onest:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0f1117;
-      --surface: #181b24;
-      --border: #2a2e3a;
-      --text: #e2e4e9;
-      --text-muted: #8b8f9e;
-      --accent: #6ee05a;
-      --accent-dim: rgba(110, 224, 90, 0.08);
-      --radius: 14px;
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --border: #2e2e2e;
+      --green: #257572;
+      --yellow: #E4AF34;
+      --gray: #595959;
+      --text: #ffffff;
+      --muted: #818384;
     }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'Onest', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.72;
-      min-height: 100vh;
+      min-height: 100dvh;
+      position: relative;
     }
 
-    /* ── header bar ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(37,117,114,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(228,175,52,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── header ── */
     .top-bar {
       position: sticky;
       top: 0;
@@ -37,23 +48,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 24px;
-      background: rgba(15, 17, 23, 0.82);
+      background: rgba(15, 15, 15, 0.82);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--accent);
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
       letter-spacing: -0.5px;
     }
 
-    .logo span { color: var(--text-muted); font-weight: 400; }
-
-    /* ── language switcher ── */
+    /* ── lang switcher ── */
     .lang-switch {
       display: flex;
       gap: 4px;
@@ -64,55 +72,59 @@
     }
 
     .lang-btn {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Onest', sans-serif;
       font-size: 0.82rem;
       font-weight: 600;
       padding: 6px 14px;
       border: none;
       border-radius: 7px;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--muted);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: opacity 0.15s, transform 0.15s, background 0.15s, color 0.15s;
     }
 
     .lang-btn:hover { color: var(--text); }
-    .lang-btn.active {
-      background: var(--accent);
-      color: var(--bg);
-    }
+    .lang-btn:active { opacity: 0.8; transform: scale(0.96); }
+    .lang-btn.active { background: var(--green); color: #fff; }
 
     /* ── content ── */
     .wrapper {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
       padding: 48px 24px 80px;
+      position: relative;
+      z-index: 1;
     }
 
     .page-title {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--text);
     }
 
     .updated {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--muted);
       margin-bottom: 40px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--border);
     }
 
     .intro {
-      font-size: 1.02rem;
-      color: var(--text-muted);
+      font-size: 1rem;
+      color: var(--muted);
       margin-bottom: 36px;
     }
 
-    .section {
-      margin-bottom: 32px;
+    /* ── sections ── */
+    .section { margin-bottom: 28px; }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
     .section-number {
@@ -121,32 +133,25 @@
       justify-content: center;
       width: 28px;
       height: 28px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-dim);
+      color: var(--green);
+      background: rgba(37, 117, 114, 0.15);
       border-radius: 8px;
       margin-right: 10px;
       flex-shrink: 0;
     }
 
-    .section-heading {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
     .section h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.12rem;
-      font-weight: 700;
-      color: var(--text);
+      font-family: 'Onest', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
     }
 
     .section p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      color: var(--muted);
+      font-size: 0.93rem;
       padding-left: 38px;
     }
 
@@ -154,18 +159,16 @@
     .lang-content { display: none; }
     .lang-content.visible { display: block; }
 
-    /* ── footer ── */
     .footer {
       text-align: center;
       padding: 24px;
       font-size: 0.8rem;
-      color: var(--text-muted);
-      opacity: 0.5;
+      color: var(--muted);
+      opacity: 0.4;
     }
 
-    /* ── animations ── */
     .lang-content.visible .section {
-      animation: slideUp 0.3s ease both;
+      animation: fadeUp 0.35s ease both;
     }
     .lang-content.visible .section:nth-child(2) { animation-delay: 0.03s; }
     .lang-content.visible .section:nth-child(3) { animation-delay: 0.06s; }
@@ -175,8 +178,8 @@
     .lang-content.visible .section:nth-child(7) { animation-delay: 0.18s; }
     .lang-content.visible .section:nth-child(8) { animation-delay: 0.21s; }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(12px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -191,7 +194,7 @@
 <body>
 
   <header class="top-bar">
-    <div class="logo">Wordy<span>Fresh</span></div>
+    <div class="logo">WORDY FRESH</div>
     <nav class="lang-switch">
       <button class="lang-btn active" data-lang="ru">RU</button>
       <button class="lang-btn" data-lang="en">EN</button>
@@ -201,7 +204,7 @@
 
   <main class="wrapper">
 
-    <!-- ════════ RUSSIAN ════════ -->
+    <!-- ═══ RU ═══ -->
     <div class="lang-content visible" id="lang-ru">
       <h1 class="page-title">Условия использования</h1>
       <p class="updated">Последнее обновление: июль 2025</p>
@@ -232,7 +235,7 @@
         <p>Настоящие условия могут быть обновлены без предварительного уведомления. Актуальная версия всегда доступна в приложении и на сайте.</p></div>
     </div>
 
-    <!-- ════════ ENGLISH ════════ -->
+    <!-- ═══ EN ═══ -->
     <div class="lang-content" id="lang-en">
       <h1 class="page-title">Terms of Use</h1>
       <p class="updated">Last updated: July 2025</p>
@@ -263,7 +266,7 @@
         <p>These terms may be updated at any time without prior notice. The current version is always available within the app and on the website.</p></div>
     </div>
 
-    <!-- ════════ CZECH ════════ -->
+    <!-- ═══ CZ ═══ -->
     <div class="lang-content" id="lang-cs">
       <h1 class="page-title">Podmínky používání</h1>
       <p class="updated">Poslední aktualizace: červenec 2025</p>
@@ -296,8 +299,8 @@
 
   </main>
 
-  <footer class="footer">© 2025 Wordy Fresh</footer>
-  
+  <footer class="footer">© 2026 Wordy Fresh</footer>
+
   <script src="change_lang.js"></script>
 </body>
 </html>
