@@ -2,59 +2,397 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Политика конфиденциальности</title>
-  <link rel="icon" type="image/png" href="ic_app.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wordy Fresh — Privacy Policy</title>
+  <link rel="icon" type="image/png" href="img/ic_app.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-    h1 { color: #333; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #181b24;
+      --border: #2a2e3a;
+      --text: #e2e4e9;
+      --text-muted: #8b8f9e;
+      --accent: #6ee05a;
+      --accent-dim: rgba(110, 224, 90, 0.08);
+      --radius: 14px;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: rgba(15, 17, 23, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--text-muted); font-weight: 400; }
+
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .page-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 8px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section p,
+    .section ul {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      padding-left: 38px;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .section ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 5px;
+    }
+
+    .section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .section p + p,
+    .section ul + p {
+      margin-top: 10px;
+    }
+
+    .lang-content { display: none; }
+    .lang-content.visible { display: block; }
+
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .lang-content.visible .section {
+      animation: slideUp 0.3s ease both;
+    }
+    .lang-content.visible .section:nth-child(2) { animation-delay: 0.03s; }
+    .lang-content.visible .section:nth-child(3) { animation-delay: 0.06s; }
+    .lang-content.visible .section:nth-child(4) { animation-delay: 0.09s; }
+    .lang-content.visible .section:nth-child(5) { animation-delay: 0.12s; }
+    .lang-content.visible .section:nth-child(6) { animation-delay: 0.15s; }
+    .lang-content.visible .section:nth-child(7) { animation-delay: 0.18s; }
+    .lang-content.visible .section:nth-child(8) { animation-delay: 0.21s; }
+    .lang-content.visible .section:nth-child(9) { animation-delay: 0.24s; }
+    .lang-content.visible .section:nth-child(10) { animation-delay: 0.27s; }
+    .lang-content.visible .section:nth-child(11) { animation-delay: 0.30s; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .top-bar { padding: 12px 16px; }
+      .wrapper { padding: 32px 18px 60px; }
+      .lang-btn { padding: 5px 10px; font-size: 0.78rem; }
+      .section p, .section ul { padding-left: 0; }
+    }
   </style>
 </head>
 <body>
-  <h1>Политика конфиденциальности</h1>
-  <p>Настоящая политика конфиденциальности описывает, какие данные собираются в мобильном приложении Wordy, с какой целью они используются, а также как обеспечивается их безопасность.</p>
 
-  <h2>1. Регистрация и персональные данные</h2>
-  <p>При создании аккаунта пользователь предоставляет следующие данные:</p>
-  <ul>
-    <li>Никнейм (отображается внутри приложения);</li>
-    <li>Электронную почту (используется для входа, подтверждения регистрации и восстановления доступа);</li>
-    <li>Пароль (хранится в зашифрованном виде);</li>
-    <li>Фотографию профиля (необязательный параметр).</li>
-  </ul>
-  <p>Пользователь подтверждает согласие с настоящей политикой конфиденциальности и условиями использования до завершения регистрации.</p>
+  <header class="top-bar">
+    <div class="logo">Wordy<span>Fresh</span></div>
+    <nav class="lang-switch">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="cs">CZ</button>
+    </nav>
+  </header>
 
-  <h2>2. Подтверждение email и уведомления</h2>
-  <p>На указанный адрес электронной почты могут отправляться системные письма — например, для подтверждения регистрации, смены email или восстановления доступа к аккаунту.</p>
+  <main class="wrapper">
 
-  <h2>3. Обработка и хранение данных</h2>
-  <p>Серверная база данных хранит следующие данные пользователя:</p>
-  <ul>
-    <li>Информация об аккаунте: ID, email, никнейм, дата регистрации и последнего обновления;</li>
-    <li>Игровая статистика (по режимам, словарю, достижениям);</li>
-    <li>Настройки профиля, включая ссылку на загруженное изображение (если оно было загружено).</li>
-  </ul>
-  <p>Эти данные используются исключительно для синхронизации между устройствами и персонализации интерфейса. Они не передаются третьим лицам, не используются для рекламы или аналитики и не обрабатываются за пределами проекта Wordy.</p>
+    <!-- ════════ RUSSIAN ════════ -->
+    <div class="lang-content visible" id="lang-ru">
+      <h1 class="page-title">Политика конфиденциальности</h1>
+      <p class="updated">Последнее обновление: июль 2025</p>
+      <p class="intro">Настоящая политика описывает, какие данные собираются в мобильном приложении Wordy Fresh, с какой целью они используются и как обеспечивается их безопасность.</p>
 
-  <h2>4. Локальное хранение</h2>
-  <p>На устройстве пользователя также используется локальная база данных (Room, AppDataStore) для обеспечения офлайн-доступа к словарю, статистике и другим пользовательским данным. Разработчик не имеет доступа к содержимому локального хранилища.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Регистрация и персональные данные</h2></div>
+        <p>При создании аккаунта пользователь предоставляет следующие данные:</p>
+        <ul>
+          <li>Никнейм — отображается внутри приложения</li>
+          <li>Электронная почта — используется для входа, подтверждения и восстановления доступа</li>
+          <li>Пароль — хранится в зашифрованном виде</li>
+          <li>Фотография профиля — необязательный параметр</li>
+        </ul>
+        <p>Пользователь подтверждает согласие с настоящей политикой и условиями использования до завершения регистрации.</p></div>
 
-  <h2>5. Мультимедиа</h2>
-  <p>Фотография, загружаемая пользователем как аватар, может быть сохранена в облачном хранилище и отображается в профиле. Эта фотография не используется ни в каких других целях и может быть удалена пользователем в любое время.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Подтверждение email и уведомления</h2></div>
+        <p>На указанный адрес электронной почты могут отправляться системные письма — для подтверждения регистрации, смены email или восстановления доступа к аккаунту.</p></div>
 
-  <h2>6. Обратная связь</h2>
-  <p>Если вы связываетесь со службой поддержки, вы можете добровольно указать адрес электронной почты или другие данные. Эта информация используется исключительно для ответа на ваш запрос и не сохраняется в долгосрочном хранилище.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Обработка и хранение данных</h2></div>
+        <p>Серверная база данных хранит следующие данные:</p>
+        <ul>
+          <li>Информация об аккаунте: ID, email, никнейм, даты регистрации и обновления</li>
+          <li>Игровая статистика по режимам, словарю и достижениям</li>
+          <li>Настройки профиля, включая ссылку на загруженное изображение</li>
+        </ul>
+        <p>Эти данные используются исключительно для синхронизации между устройствами и персонализации интерфейса. Они не передаются третьим лицам и не обрабатываются за пределами проекта Wordy Fresh.</p></div>
 
-  <h2>7. Безопасность</h2>
-  <p>Все соединения с сервером осуществляются по защищённому протоколу HTTPS. Авторизация и хранение пользовательских данных осуществляются через защищённые механизмы платформы Supabase.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Реклама и сторонние сервисы</h2></div>
+        <p>Приложение использует сторонние рекламные SDK для показа рекламы. Эти SDK могут собирать обезличенные технические данные — такие как идентификатор устройства, тип ОС и общие параметры взаимодействия — в соответствии с собственными политиками конфиденциальности рекламных партнёров. Разработчик Wordy Fresh не имеет доступа к персональным данным, собираемым рекламными сетями.</p></div>
 
-  <h2>8. Удаление аккаунта</h2>
-  <p>Если вы хотите удалить свой аккаунт и все связанные с ним данные, свяжитесь со службой поддержки через форму обратной связи в приложении. Удаление будет выполнено в течение 7 рабочих дней после подтверждения личности.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Локальное хранение</h2></div>
+        <p>На устройстве пользователя используется локальная база данных (Room, DataStore) для обеспечения офлайн-доступа к словарю, статистике и другим данным. Разработчик не имеет доступа к содержимому локального хранилища.</p></div>
 
-  <h2>9. Изменения в политике</h2>
-  <p>Мы оставляем за собой право обновлять эту политику конфиденциальности. Об изменениях будет сообщено в приложении или на сайте.</p>
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>Мультимедиа</h2></div>
+        <p>Фотография, загружаемая как аватар, может быть сохранена в облачном хранилище и отображается в профиле. Она не используется в иных целях и может быть удалена пользователем в любое время.</p></div>
 
-  <p>Дата последнего обновления: июль 2025 года</p>
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Обратная связь</h2></div>
+        <p>При обращении в поддержку вы можете добровольно указать адрес электронной почты. Эта информация используется исключительно для ответа на запрос и не сохраняется в долгосрочном хранилище.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Безопасность</h2></div>
+        <p>Все соединения с сервером осуществляются по протоколу HTTPS. Авторизация и хранение данных реализованы через защищённые механизмы платформы Supabase.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">9</span><h2>Удаление аккаунта</h2></div>
+        <p>Для удаления аккаунта и всех связанных данных свяжитесь через форму обратной связи в приложении. Удаление выполняется в течение 7 рабочих дней после подтверждения.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">10</span><h2>Изменения в политике</h2></div>
+        <p>Мы оставляем за собой право обновлять эту политику. Об изменениях будет сообщено в приложении или на сайте.</p></div>
+    </div>
+
+    <!-- ════════ ENGLISH ════════ -->
+    <div class="lang-content" id="lang-en">
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="updated">Last updated: July 2025</p>
+      <p class="intro">This policy describes what data is collected by the Wordy Fresh mobile application, how it is used, and how its security is ensured.</p>
+
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Registration &amp; Personal Data</h2></div>
+        <p>When creating an account, the user provides the following information:</p>
+        <ul>
+          <li>Nickname — displayed within the app</li>
+          <li>Email address — used for login, confirmation, and account recovery</li>
+          <li>Password — stored in encrypted form</li>
+          <li>Profile photo — optional</li>
+        </ul>
+        <p>The user confirms agreement with this privacy policy and the terms of use before completing registration.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Email Verification &amp; Notifications</h2></div>
+        <p>System emails may be sent to the provided email address — for registration confirmation, email changes, or account recovery.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Data Processing &amp; Storage</h2></div>
+        <p>The server database stores the following user data:</p>
+        <ul>
+          <li>Account information: ID, email, nickname, registration and update dates</li>
+          <li>Game statistics by mode, dictionary, and achievements</li>
+          <li>Profile settings, including a link to the uploaded image</li>
+        </ul>
+        <p>This data is used solely for cross-device synchronization and interface personalization. It is not shared with third parties and is not processed outside the Wordy Fresh project.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Advertising &amp; Third-Party Services</h2></div>
+        <p>The app uses third-party advertising SDKs to display ads. These SDKs may collect anonymized technical data — such as device identifier, OS type, and general interaction parameters — in accordance with the advertising partners' own privacy policies. The developer of Wordy Fresh does not have access to personal data collected by ad networks.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Local Storage</h2></div>
+        <p>A local database (Room, DataStore) is used on the user's device to provide offline access to the dictionary, statistics, and other data. The developer does not have access to the contents of local storage.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>Media</h2></div>
+        <p>A photo uploaded as an avatar may be stored in cloud storage and displayed in the user's profile. It is not used for any other purpose and can be deleted by the user at any time.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Feedback</h2></div>
+        <p>When contacting support, you may voluntarily provide your email address. This information is used solely to respond to your request and is not retained in long-term storage.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Security</h2></div>
+        <p>All server connections are made over HTTPS. Authentication and data storage are implemented through the secure mechanisms of the Supabase platform.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">9</span><h2>Account Deletion</h2></div>
+        <p>To delete your account and all associated data, contact us via the in-app feedback form. Deletion is completed within 7 business days after confirmation.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">10</span><h2>Policy Changes</h2></div>
+        <p>We reserve the right to update this policy. Changes will be communicated through the app or on the website.</p></div>
+    </div>
+
+    <!-- ════════ CZECH ════════ -->
+    <div class="lang-content" id="lang-cs">
+      <h1 class="page-title">Zásady ochrany osobních údajů</h1>
+      <p class="updated">Poslední aktualizace: červenec 2025</p>
+      <p class="intro">Tyto zásady popisují, jaká data mobilní aplikace Wordy Fresh shromažďuje, za jakým účelem je používá a jak zajišťuje jejich bezpečnost.</p>
+
+      <div class="section"><div class="section-heading"><span class="section-number">1</span><h2>Registrace a osobní údaje</h2></div>
+        <p>Při vytváření účtu uživatel poskytne následující údaje:</p>
+        <ul>
+          <li>Přezdívka — zobrazuje se v aplikaci</li>
+          <li>E-mailová adresa — slouží k přihlášení, potvrzení a obnovení přístupu</li>
+          <li>Heslo — uloženo v zašifrované podobě</li>
+          <li>Profilová fotografie — volitelný údaj</li>
+        </ul>
+        <p>Uživatel potvrzuje souhlas s těmito zásadami a podmínkami používání před dokončením registrace.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">2</span><h2>Ověření e-mailu a oznámení</h2></div>
+        <p>Na zadanou e-mailovou adresu mohou být zasílány systémové zprávy — pro potvrzení registrace, změnu e-mailu nebo obnovení přístupu k účtu.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">3</span><h2>Zpracování a ukládání dat</h2></div>
+        <p>Serverová databáze uchovává následující údaje:</p>
+        <ul>
+          <li>Informace o účtu: ID, e-mail, přezdívka, datum registrace a aktualizace</li>
+          <li>Herní statistiky podle režimu, slovníku a úspěchů</li>
+          <li>Nastavení profilu včetně odkazu na nahraný obrázek</li>
+        </ul>
+        <p>Tato data slouží výhradně k synchronizaci mezi zařízeními a personalizaci rozhraní. Nejsou sdílena s třetími stranami a nejsou zpracovávána mimo projekt Wordy Fresh.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">4</span><h2>Reklama a služby třetích stran</h2></div>
+        <p>Aplikace využívá reklamní SDK třetích stran k zobrazování reklam. Tyto SDK mohou shromažďovat anonymizovaná technická data — jako identifikátor zařízení, typ OS a obecné parametry interakce — v souladu s vlastními zásadami ochrany soukromí reklamních partnerů. Vývojář Wordy Fresh nemá přístup k osobním údajům shromážděným reklamními sítěmi.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">5</span><h2>Místní úložiště</h2></div>
+        <p>Na zařízení uživatele se používá místní databáze (Room, DataStore) pro offline přístup ke slovníku, statistikám a dalším údajům. Vývojář nemá přístup k obsahu místního úložiště.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">6</span><h2>Multimédia</h2></div>
+        <p>Fotografie nahraná jako avatar může být uložena v cloudovém úložišti a zobrazena v profilu. Není používána k žádným jiným účelům a uživatel ji může kdykoli smazat.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">7</span><h2>Zpětná vazba</h2></div>
+        <p>Při kontaktování podpory můžete dobrovolně uvést svou e-mailovou adresu. Tyto údaje slouží výhradně k odpovědi na váš dotaz a nejsou dlouhodobě uchovávány.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">8</span><h2>Bezpečnost</h2></div>
+        <p>Veškerá spojení se serverem probíhají prostřednictvím protokolu HTTPS. Autentizace a ukládání dat jsou realizovány prostřednictvím zabezpečených mechanismů platformy Supabase.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">9</span><h2>Smazání účtu</h2></div>
+        <p>Pro smazání účtu a všech souvisejících dat nás kontaktujte prostřednictvím formuláře zpětné vazby v aplikaci. Smazání bude provedeno do 7 pracovních dnů po potvrzení.</p></div>
+
+      <div class="section"><div class="section-heading"><span class="section-number">10</span><h2>Změny zásad</h2></div>
+        <p>Vyhrazujeme si právo tyto zásady aktualizovat. O změnách budeme informovat prostřednictvím aplikace nebo na webových stránkách.</p></div>
+    </div>
+
+  </main>
+
+  <footer class="footer">© 2025 Wordy Fresh</footer>
+
+  <script>
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const lang = btn.dataset.lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('visible'));
+        document.getElementById('lang-' + lang).classList.add('visible');
+      });
+    });
+  </script>
 </body>
 </html>
-
-string str = "1"
